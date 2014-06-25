@@ -1,1 +1,86 @@
-/Users/razziabuissa/Library/Application Support/KeyRemap4MacBook/private.xml
+<?xml version="1.0"?>
+<root>
+	<appdef>
+	    <appname>CHROME</appname>
+	    <equal>com.google.Chrome</equal>
+	</appdef>
+	<appdef>
+	    <appname>ITERM</appname>
+	    <equal>com.googlecode.iterm2</equal>
+	</appdef>
+	<item>
+		<name>Control W-right to option delete</name>
+		<identifier>private.control_l_w_to_option_delete</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::W, ModifierFlag::CONTROL_R,
+			KeyCode::DELETE, ModifierFlag::OPTION_L
+		</autogen>
+	</item>
+	<item>
+		<name>Command U to delete line</name>
+		<identifier>private.command_u_to_delete_line</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::U, ModifierFlag::CONTROL_L,
+			KeyCode::DELETE, ModifierFlag::COMMAND_L
+		</autogen>
+	</item>
+	<item>
+		<name>Control p to up arrow</name>
+		<identifier>private.control_p_to_up_arrow</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::P, ModifierFlag::CONTROL_L,
+			KeyCode::CURSOR_UP
+		</autogen>
+	</item>
+	<item>
+		<name>Control v to move right</name>
+		<identifier>private.control_v_to_move_right</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::V, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+		</autogen>
+	</item>
+	<item>
+		<name>Control s to down and submit</name>
+		<identifier>private.control_s_to_submit</identifier>
+		<only>CHROME</only>
+		<autogen>__KeyToKey__
+			KeyCode::S, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_DOWN, KeyCode::ENTER
+		</autogen>
+	</item>
+	<item>
+		<name>Control s to right and submit</name>
+		<identifier>private.control_s_to_right_submit</identifier>
+		<only>ITERM</only>
+		<autogen>__KeyToKey__
+			KeyCode::S, ModifierFlag::CONTROL_R,
+			KeyCode::E, ModifierFlag::CONTROL_R,
+			KeyCode::ENTER
+		</autogen>
+	</item>
+	<item>
+		<name>Control q to move left</name>
+		<identifier>private.control_q_to_move_left</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::Q, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+		</autogen>
+	</item>
+	<item>
+		<name>Command shift minus to F11</name>
+		<identifier>private.command_shift_minus_f11</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::MINUS, ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L,
+			KeyCode::F11
+		</autogen>
+	</item>
+	<item>
+		<name>semicolon to enter</name>
+		<identifier>private.semicolon_to_enter</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::SEMICOLON, ModifierFlag::NONE,
+			KeyCode::ENTER
+		</autogen>
+	</item>
+</root>
