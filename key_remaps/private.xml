@@ -1,16 +1,25 @@
 <?xml version="1.0"?>
 <root>
 	<appdef>
-	    <appname>CHROME</appname>
-	    <equal>com.google.Chrome</equal>
+    <appname>SLACK</appname>
+    <equal>com.tinyspeck.slackmacgap</equal>
+  </appdef>
+  <appdef>
+    <appname>CHROME</appname>
+    <equal>com.google.Chrome</equal>
+  </appdef>
+  <appdef>
+	  <appname>CHROMIUM</appname>
+	  <equal>org.chromium.Chromium</equal>
 	</appdef>
 	<appdef>
-	    <appname>ITERM</appname>
-	    <equal>com.googlecode.iterm2</equal>
+	  <appname>ITERM</appname>
+	  <equal>com.googlecode.iterm2</equal>
 	</appdef>
 	<item>
 		<name>Control W-right to option delete</name>
-		<identifier>private.control_l_w_to_option_delete</identifier>
+		<identifier>private.control_w_to_option_delete</identifier>
+        <only>CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::W, ModifierFlag::CONTROL_R,
 			KeyCode::DELETE, ModifierFlag::OPTION_L
@@ -33,6 +42,14 @@
 		</autogen>
 	</item>
 	<item>
+		<name>Option f to right arrow</name>
+		<identifier>private.control_f_to_right_arrow</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::F, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_RIGHT
+		</autogen>
+	</item>
+	<item>
 		<name>Control v to move right</name>
 		<identifier>private.control_v_to_move_right</identifier>
 		<autogen>__KeyToKey__
@@ -43,19 +60,19 @@
 	<item>
 		<name>Control s to down and submit</name>
 		<identifier>private.control_s_to_submit</identifier>
-		<only>CHROME</only>
+		<!-- <only>CHROME</only> -->
 		<autogen>__KeyToKey__
 			KeyCode::S, ModifierFlag::CONTROL_R,
 			KeyCode::CURSOR_DOWN, KeyCode::ENTER
 		</autogen>
 	</item>
 	<item>
-		<name>Control s to right and submit</name>
+		<name>Control s to down right and submit</name>
 		<identifier>private.control_s_to_right_submit</identifier>
-		<only>ITERM</only>
 		<autogen>__KeyToKey__
 			KeyCode::S, ModifierFlag::CONTROL_R,
 			KeyCode::E, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_DOWN,
 			KeyCode::ENTER
 		</autogen>
 	</item>
