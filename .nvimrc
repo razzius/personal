@@ -9,7 +9,9 @@ set softtabstop=2
 set expandtab
 set laststatus=2
 set autoread
-
+set shell=/bin/sh
+set splitbelow
+set cursorline
 " Disable comment continuation
 " TODO this doesn't work
 set formatoptions-=cro
@@ -32,6 +34,7 @@ set scrolloff=4
 
 call plug#begin('~/.nvim/plugged')
 " Plug 'shougo/neocomplete.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'shougo/unite.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/keepcase.vim'
@@ -41,16 +44,22 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 Plug 'valloric/MatchTagAlways'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chrisbra/improvedft'
 Plug 'jiangmiao/auto-pairs'
 Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/vim-peekaboo'
 Plug 'trusktr/seti.vim'
-Plug 'mhinz/vim-startify'
+Plug 'rking/ag.vim'
+" Plug 'mhinz/vim-startify'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+" TODO make changing to root manual
+" Plug 'airblade/vim-rooter'
 " Requires lua support
 " Plug 'Shougo/neocomplete.vim'
 
@@ -61,7 +70,11 @@ call plug#end()
 colorscheme seti
 
 let g:airline_extensions = []
-let g:neocomplete#enable_at_startup = 1
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:mustache_abbreviations = 1
+
+" TODO
+let g:html_indent_inctags = "template"
 
 " TODO
 " nnoremap <leader>/ <plug>NERDComToggleComment
@@ -81,16 +94,22 @@ inoremap kj <esc>
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-nnoremap <leader>j o<Esc>
-nnoremap <leader>k O<Esc>
+" nnoremap <leader>j o<Esc>
+" nnoremap <leader>k O<Esc>
 nnoremap <leader>w :write<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>s :source $MYVIMRC<cr>
-nnoremap <leader>o :FZF<cr>
+nnoremap <leader>o :call fzf#run({'sink': 'tabe'})<cr>
+nnoremap <leader>js :exec ':vsp ' . GetJSName()<cr>
+nnoremap <leader>ht :exec ':vsp ' . GetHTMLName()<cr>
+nnoremap <leader>i :source $MYVIMRC<cr>:PlugInstall<cr>
+nnoremap <leader><space> i<space><esc>
 
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+" TODO noremap
+xmap ' S'
 " TODO fix text object so this is not necessary
 " nnoremap djk V%d
 
@@ -106,11 +125,15 @@ nnoremap <Leader>y "*y
 vnoremap <Leader>y "*y
 nnoremap <Leader>p "*p
 vnoremap <Leader>p "*p
+nnoremap <Leader>P "*P
+vnoremap <Leader>P "*P
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 onoremap p i(
+
+autocmd FocusGained,BufEnter * :silent! !
 
 augroup filetype_javascript
   autocmd!
@@ -137,7 +160,8 @@ augroup filetype_html
   autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
   " TODO fix indent
   autocmd FileType html inoremap <buffer> </ </<C-X><C-O>
-  autocmd FileType html autocmd BufWritePre <buffer> :call HTMLFormat()
+  " TODO fix beautify html to handle {{tag}} \n {{tag}}
+  " autocmd FileType html autocmd BufWritePre <buffer> :call HTMLFormat()
 augroup END
 
 " autocmd StdinReadPre * let s:std_in=1
@@ -156,8 +180,9 @@ function! EnterOrIndentTag()
 endfunction
 
 inoremap <expr> <Enter> EnterOrIndentTag()
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" <div class="hi mom">
+" </div>
 " autocmd User Startified let &l:stl = 'this is cool'
 
 " call textobj#user#plugin('json', {
@@ -206,3 +231,16 @@ function! HTMLFormat()
   call winrestview(l:win_view)
   call setreg('/', l:last_search)
 endfunction
+
+function! GetJSName()
+  let l:filename = expand('%:p')
+  " TODO generic filetype
+  return substitute(l:filename, '.html', '.js', '')
+endfunction
+
+function! GetHTMLName()
+  let l:filename = expand('%:p')
+  " TODO generic filetype
+  return substitute(l:filename, '.js', '.html', '')
+endfunction
+
