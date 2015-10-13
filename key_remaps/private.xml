@@ -17,9 +17,9 @@
 		<equal>com.googlecode.iterm2</equal>
 	</appdef>
 	<item>
-		<name>Control W-right to option delete</name>
+		<name>Control w-right to option delete</name>
 		<identifier>private.control_w_to_option_delete</identifier>
-				<only>CHROME, CHROMIUM, SLACK</only>
+    <only>CHROME, CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::W, ModifierFlag::CONTROL_R,
 			KeyCode::DELETE, ModifierFlag::OPTION_L
@@ -34,16 +34,16 @@
 		</autogen>
 	</item>
 	<item>
-		<name>Control J to enter</name>
+		<name>Control j to enter</name>
 		<identifier>private.control_j_to_enter</identifier>
-				<only>CHROMIUM, SLACK</only>
+    <only>CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::J, ModifierFlag::CONTROL_L,
 			KeyCode::ENTER
 		</autogen>
 	</item>
 	<item>
-		<name>Control U to delete line</name>
+		<name>Control u to delete line</name>
 		<identifier>private.command_u_to_delete_line</identifier>
 		<autogen>__KeyToKey__
 			KeyCode::U, ModifierFlag::CONTROL_L,
@@ -59,7 +59,7 @@
 		</autogen>
 	</item>
 	<item>
-		<name>Option f to right arrow</name>
+		<name>Control f to right arrow</name>
 		<identifier>private.control_f_to_right_arrow</identifier>
 		<autogen>__KeyToKey__
 			KeyCode::F, ModifierFlag::CONTROL_R,
