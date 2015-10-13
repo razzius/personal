@@ -19,14 +19,31 @@
 	<item>
 		<name>Control W-right to option delete</name>
 		<identifier>private.control_w_to_option_delete</identifier>
-        <only>CHROMIUM, SLACK</only>
+        <only>CHROME, CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::W, ModifierFlag::CONTROL_R,
 			KeyCode::DELETE, ModifierFlag::OPTION_L
 		</autogen>
 	</item>
 	<item>
-		<name>Command U to delete line</name>
+		<name>Application to control-r</name>
+		<identifier>private.application_to_control_r</identifier>
+		<autogen>__KeyToKey__
+			KeyCode::PC_APPLICATION,
+			KeyCode::CONTROL_R
+		</autogen>
+	</item>
+	<item>
+		<name>Control J to enter</name>
+		<identifier>private.control_j_to_enter</identifier>
+        <only>CHROMIUM, SLACK</only>
+		<autogen>__KeyToKey__
+			KeyCode::J, ModifierFlag::CONTROL_L,
+			KeyCode::ENTER
+		</autogen>
+	</item>
+	<item>
+		<name>Control U to delete line</name>
 		<identifier>private.command_u_to_delete_line</identifier>
 		<autogen>__KeyToKey__
 			KeyCode::U, ModifierFlag::CONTROL_L,
@@ -58,20 +75,11 @@
 		</autogen>
 	</item>
 	<item>
-		<name>Control s to down and submit</name>
-		<identifier>private.control_s_to_submit</identifier>
-		<!-- <only>CHROME</only> -->
+		<name>Control s to autocomplete</name>
+		<identifier>private.control_s_to_autocomplete</identifier>
 		<autogen>__KeyToKey__
 			KeyCode::S, ModifierFlag::CONTROL_R,
-			KeyCode::CURSOR_DOWN, KeyCode::ENTER
-		</autogen>
-	</item>
-	<item>
-		<name>Control s to down right and submit</name>
-		<identifier>private.control_s_to_right_submit</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::S, ModifierFlag::CONTROL_R,
-			KeyCode::E, ModifierFlag::CONTROL_R,
+			KeyCode::CURSOR_RIGHT,
 			KeyCode::CURSOR_DOWN,
 			KeyCode::ENTER
 		</autogen>
@@ -85,15 +93,7 @@
 		</autogen>
 	</item>
 	<item>
-		<name>Command shift minus to F11</name>
-		<identifier>private.command_shift_minus_f11</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::MINUS, ModifierFlag::COMMAND_L, ModifierFlag::SHIFT_L,
-			KeyCode::F11
-		</autogen>
-	</item>
-	<item>
-		<name>semicolon to enter</name>
+		<name>Semicolon to enter</name>
 		<identifier>private.semicolon_to_enter</identifier>
 		<autogen>__KeyToKey__
 			KeyCode::SEMICOLON, ModifierFlag::NONE,
