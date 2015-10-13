@@ -19,7 +19,7 @@
 	<item>
 		<name>Control w-right to option delete</name>
 		<identifier>private.control_w_to_option_delete</identifier>
-    <only>CHROME, CHROMIUM, SLACK</only>
+		<only>CHROME, CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::W, ModifierFlag::CONTROL_R,
 			KeyCode::DELETE, ModifierFlag::OPTION_L
@@ -36,7 +36,7 @@
 	<item>
 		<name>Control j to enter</name>
 		<identifier>private.control_j_to_enter</identifier>
-    <only>CHROMIUM, SLACK</only>
+		<only>CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::J, ModifierFlag::CONTROL_L,
 			KeyCode::ENTER
