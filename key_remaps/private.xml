@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <root>
 	<appdef>
-    <appname>SLACK</appname>
-    <equal>com.tinyspeck.slackmacgap</equal>
-  </appdef>
-  <appdef>
-    <appname>CHROME</appname>
-    <equal>com.google.Chrome</equal>
-  </appdef>
-  <appdef>
-	  <appname>CHROMIUM</appname>
-	  <equal>org.chromium.Chromium</equal>
+		<appname>SLACK</appname>
+		<equal>com.tinyspeck.slackmacgap</equal>
 	</appdef>
 	<appdef>
-	  <appname>ITERM</appname>
-	  <equal>com.googlecode.iterm2</equal>
+		<appname>CHROME</appname>
+		<equal>com.google.Chrome</equal>
+	</appdef>
+	<appdef>
+		<appname>CHROMIUM</appname>
+		<equal>org.chromium.Chromium</equal>
+	</appdef>
+	<appdef>
+		<appname>ITERM</appname>
+		<equal>com.googlecode.iterm2</equal>
 	</appdef>
 	<item>
 		<name>Control W-right to option delete</name>
 		<identifier>private.control_w_to_option_delete</identifier>
-        <only>CHROME, CHROMIUM, SLACK</only>
+				<only>CHROME, CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::W, ModifierFlag::CONTROL_R,
 			KeyCode::DELETE, ModifierFlag::OPTION_L
@@ -36,7 +36,7 @@
 	<item>
 		<name>Control J to enter</name>
 		<identifier>private.control_j_to_enter</identifier>
-        <only>CHROMIUM, SLACK</only>
+				<only>CHROMIUM, SLACK</only>
 		<autogen>__KeyToKey__
 			KeyCode::J, ModifierFlag::CONTROL_L,
 			KeyCode::ENTER
