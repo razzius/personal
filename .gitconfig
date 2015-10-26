@@ -1,0 +1,19 @@
+[user]
+	name = Razzi Abuissa
+	email = razzi53@gmail.com
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[alias]
+	add = add --all
+	wdiff = diff --color-words
+	cl = clone
+	unstage = reset HEAD --
+	new = diff --cached
+[core]
+	excludesfile = ~/.gitignore_global
+[pull]
+	rebase = true
+[rebase]
+	stat = true
