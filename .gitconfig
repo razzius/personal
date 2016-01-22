@@ -13,7 +13,12 @@
 	new = diff --cached
 [core]
 	excludesfile = ~/.gitignore_global
+  editor=vim
 [pull]
 	rebase = true
 [rebase]
 	stat = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

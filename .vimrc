@@ -1,5 +1,8 @@
 syntax on
+filetype plugin on
 
+set completeopt=menu
+set t_Co=256
 " set foldmethod=syntax
 set lazyredraw
 set autoread
@@ -13,7 +16,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set infercase
-set iskeyword-=_
+" set iskeyword-=_
 set laststatus=2
 set linebreak
 set mouse=a
@@ -25,7 +28,7 @@ set numberwidth=3
 set relativenumber
 set scrolloff=3
 set shell=/bin/sh
-set shiftwidth=2
+set shiftwidth=4
 set shortmess+=I
 set showcmd
 set smartcase
@@ -37,25 +40,32 @@ set splitright
 set tabstop=2
 set undodir=~/.vim/undo//
 set undofile
-set virtualedit=onemore
+" set virtualedit=onemore
 set wildmenu
 set wildmode=longest:list,full
-
+set tags=~/code/clint/tags
 let &showbreak = '> '
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 let g:airline_powerline_fonts = 1
+" let g:pymode = 1
+let g:pymode_python = 'python3'
+let g:pymode_rope = 0
+let g:pymode_doc = 0
+let g:pymode_rope_complete_on_dot = 0
 
 call plug#begin('~/.vim/plugged')
-Plug 'shougo/neocomplete.vim'
+" Plug 'shougo/neocomplete.vim'
 Plug 'shougo/neosnippet.vim'
 Plug 'pangloss/vim-javascript'
-" Plug 'shougo/unite.vim'
+Plug 'shougo/unite.vim'
+" Plug 'klen/python-mode'
+Plug 'mkarmona/colorsbox'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-jdaddy'
@@ -68,7 +78,7 @@ Plug 'chrisbra/improvedft'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-peekaboo'
-Plug 'trusktr/seti.vim'
+" Plug 'trusktr/seti.vim'
 Plug 'rking/ag.vim'
 " Plug 'mhinz/vim-startify'
 Plug 'kshenoy/vim-signature'
@@ -77,32 +87,36 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tmhedberg/matchit'
 Plug 'wincent/Command-T', {'do': 'cd ruby/command-t; ruby extconf.rb; make'}
 " TODO better html linter
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " TODO make changing to root manual
 " Plug 'airblade/vim-rooter'
 " Requires lua support
 " Plug 'valloric/YouCompleteMe'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'kana/vim-textobj-entire'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'AndrewRadev/switch.vim'
 call plug#end()
 
-colorscheme seti
+" colorscheme seti
+" colorscheme blink
 
 let g:airline_extensions = []
 let g:ag_working_path_mode="r"
 let g:mustache_abbreviations = 1
-let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
 let g:neosnippet#disable_runtime_snippets = {'_': 1}
 let g:neosnippet#snippets_directory='~/.vim/neosnippets'
-let g:CommandTWildIgnore="node_modules"
+let g:CommandTWildIgnore="node_modules,nginx_content,__pycache__"
 let g:CommandTMaxHeight=20
 let g:CommandTAcceptSelectionMap='<C-j>'
 let g:CommandTSelectNextMap=['<C-n>', 'Down']
 let g:multi_cursor_quit_key='<C-c>'
 nnoremap <C-c> :call multiple_cursors#quit()<CR>
 " TODO
-" let g:syntastic_html_tidy_exec = 'tidy'
+let g:syntastic_html_checkers=['']
+let g:syntastic_python_checkers=['flake8']
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -123,37 +137,55 @@ nnoremap LL Lzz
 nnoremap HH Hzz
 nnoremap Y y$
 nnoremap YY Yp
+nnoremap <cr> :ccl \| noh<cr>
+nnoremap Q @q
+nnoremap <tab> gt
+nnoremap <s-tab> gT
 
 inoremap <c-t> <esc>hxpa
 inoremap kj <esc>
 inoremap <space><space> <esc>
+inoremap <c-l> <c-x><c-l>
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-nnoremap <leader>w :write<cr>
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :q!<cr>
-nnoremap <leader>v :vsplit $MYVIMRC<cr>
-nnoremap <leader>o :put<cr>
-nnoremap <leader>O :put *<cr>
-nnoremap <leader>j :exec ':vsp ' . GetFileExtension('js')<cr>
-nnoremap <leader>h :exec ':vsp ' . GetFileExtension('html')<cr>
-nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
-nnoremap <leader>i :source $MYVIMRC<cr>:PlugInstall<cr>
-nnoremap <leader><space> i<space><esc>
-nnoremap <leader>n :NeoSnippetEdit<cr>
-nnoremap <leader>, A,<cr><cr>
-nnoremap <leader>. @:<cr> " repeat last ex command
-nnoremap <leader>x :execute getline('.')<cr>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <silent> <leader>9 :tabl<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>, A,<esc>
+nnoremap <leader>. @:<cr> " repeat last ex command
+nnoremap <leader>- :Switch<cr>
+nnoremap <leader><space> :write<cr>
+nnoremap <leader>A :Ag<space><c-r><c-w><cr>
+nnoremap <leader>O :put *<cr>
+nnoremap <leader>Q :q!<cr>
 nnoremap <leader>T :vs#<cr>
+nnoremap <leader>a :Ag<space>
+nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
+nnoremap <leader>g :G
+nnoremap <leader>h :exec ':vsp ' . GetFileExtension('html')<cr>
+nnoremap <leader>i :source $MYVIMRC<cr>:PlugInstall<cr>
+nnoremap <leader>j :exec ':vsp ' . GetFileExtension('js')<cr>
+nnoremap <leader>n :NeoSnippetEdit<cr>
+nnoremap <leader>o :put<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>v :vsplit $MYVIMRC<cr>
+nnoremap <leader>w :write<cr>
+nnoremap <leader>x :execute getline('.')<cr>
 " TODO
 " nnoremap <leader>a 'PoPlug '<esc>"*pa'<esc>
-nnoremap <leader>a :Ag<space>
-nnoremap <leader>A :Ag<space><c-r><c-w><cr>
 nnoremap <leader>C :ccl<cr>
+nnoremap <leader><C-]> <C-w><C-]><C-w>T
+nnoremap <silent><leader>F :CommandTFlush<cr>
 
 xnoremap ' v`<i'<esc>`>la'<esc>
 
@@ -202,8 +234,9 @@ augroup END
 augroup filetype_javascript
   autocmd!
   " TODO stdin error
-  autocmd FileType javascript autocmd BufWritePre <buffer> :call Format('esformatter')
+  " autocmd FileType javascript autocmd BufWritePre <buffer> :call Format('esformatter')
   autocmd FileType javascript xnoremap <buffer> V $%
+  autocmd FileType javascript set shiftwidth=2
 augroup END
 
 augroup auto_format
@@ -219,6 +252,7 @@ augroup END
 augroup filetype_python
   autocmd!
   " autocmd FileType python nnoremap <buffer> <leader>/ 0# <esc>
+  autocmd FileType python xnoremap <buffer> V $%
 augroup END
 
 augroup filetype_html
@@ -294,3 +328,4 @@ function! FilenameToMixed(filename)
 
 endfunction
 
+set guifont=Bitstream\ Vera\ Sans\ Mono:h17
