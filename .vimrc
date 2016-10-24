@@ -8,6 +8,7 @@ set lazyredraw
 set autoread
 set backspace=indent,eol,start
 set encoding=utf-8
+set cursorline
 set expandtab
 set formatoptions-=c
 set gdefault
@@ -24,8 +25,8 @@ set nobackup
 set nomodeline
 set noswapfile
 set number
-set numberwidth=3
-set relativenumber
+" set numberwidth=3
+" set relativenumber
 set scrolloff=3
 set shell=/bin/sh
 set shiftwidth=4
@@ -46,8 +47,10 @@ set wildmode=longest:list,full
 set tags=~/code/clint/tags
 let &showbreak = '> '
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+if $TMUX
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
 let g:airline_powerline_fonts = 1
 " let g:pymode = 1
 let g:pymode_python = 'python3'
@@ -63,7 +66,6 @@ Plug 'shougo/unite.vim'
 " Plug 'klen/python-mode'
 Plug 'mkarmona/colorsbox'
 Plug 'mattn/emmet-vim'
-Plug 'vim-scripts/keepcase.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
@@ -72,6 +74,7 @@ Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
 Plug 'valloric/MatchTagAlways'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chrisbra/improvedft'
@@ -82,21 +85,26 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'rking/ag.vim'
 " Plug 'mhinz/vim-startify'
 Plug 'kshenoy/vim-signature'
-" Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'ivanov/vim-ipython'
 Plug 'tmhedberg/matchit'
 Plug 'wincent/Command-T', {'do': 'cd ruby/command-t; ruby extconf.rb; make'}
 " TODO better html linter
 Plug 'scrooloose/syntastic'
 " TODO make changing to root manual
 " Plug 'airblade/vim-rooter'
-" Requires lua support
-" Plug 'valloric/YouCompleteMe'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'AndrewRadev/switch.vim'
+Plug 'kana/vim-textobj-entire'
+Plug 'poetic/vim-textobj-javascript'
+Plug 'sgur/vim-textobj-parameter'
+Plug 'kchmck/vim-coffee-script'
+Plug 'noc7c9/vim-iced-coffee-script'
+Plug 'othree/yajs.vim'
+" Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " colorscheme seti
@@ -113,12 +121,13 @@ let g:CommandTMaxHeight=20
 let g:CommandTAcceptSelectionMap='<C-j>'
 let g:CommandTSelectNextMap=['<C-n>', 'Down']
 let g:multi_cursor_quit_key='<C-c>'
-nnoremap <C-c> :call multiple_cursors#quit()<CR>
 " TODO
 let g:syntastic_html_checkers=['']
 let g:syntastic_python_checkers=['flake8']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " SuperTab like snippets behavior.
+" TODO check if it's a div
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: pumvisible() ? "\<C-n>"
@@ -126,6 +135,7 @@ imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \: "\<TAB>"
 
 " let g:html_indent_inctags = "template"
+let g:syntastic_python_checkers=['pyflakes']
 
 nnoremap _ ddkP
 nnoremap - ddp
@@ -141,6 +151,10 @@ nnoremap <cr> :ccl \| noh<cr>
 nnoremap Q @q
 nnoremap <tab> gt
 nnoremap <s-tab> gT
+nnoremap gp `[v`]
+nnoremap g<space> a <esc>:w<cr>
+nnoremap ]] /^}<cr>
+nnoremap [[ /^\w.* {<cr>:nohl<cr>
 
 inoremap <c-t> <esc>hxpa
 inoremap kj <esc>
@@ -150,6 +164,13 @@ inoremap <c-l> <c-x><c-l>
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
+" nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
+" nnoremap <leader>w :write<cr>
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>, A,<esc>
+nnoremap <leader>- :Switch<cr>
+nnoremap <leader>. @:<cr> " repeat last ex command
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
@@ -158,19 +179,18 @@ nnoremap <leader>5 5gt
 nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
-nnoremap <silent> <leader>9 :tabl<cr>
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <leader>, A,<esc>
-nnoremap <leader>. @:<cr> " repeat last ex command
-nnoremap <leader>- :Switch<cr>
+nnoremap <leader>< A,<cr><cr>
 nnoremap <leader><space> :write<cr>
 nnoremap <leader>A :Ag<space><c-r><c-w><cr>
+nnoremap <leader>F :CommandTFlush<cr>
 nnoremap <leader>O :put *<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader>T :vs#<cr>
+nnoremap <leader>X :tabonly \| :only<cr>
 nnoremap <leader>a :Ag<space>
-nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
+" nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
+nnoremap <leader>c V$%jy$%2jP
+nnoremap <leader>d yyp
 nnoremap <leader>g :G
 nnoremap <leader>h :exec ':vsp ' . GetFileExtension('html')<cr>
 nnoremap <leader>i :source $MYVIMRC<cr>:PlugInstall<cr>
@@ -181,11 +201,16 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>w :write<cr>
 nnoremap <leader>x :execute getline('.')<cr>
+nnoremap <silent> <leader>9 :tabl<cr>
 " TODO
 " nnoremap <leader>a 'PoPlug '<esc>"*pa'<esc>
 nnoremap <leader>C :ccl<cr>
 nnoremap <leader><C-]> <C-w><C-]><C-w>T
 nnoremap <silent><leader>F :CommandTFlush<cr>
+nnoremap <leader>s :%S/
+nnoremap <leader>z V$%zf
+
+inoremap <C-l> <C-x><C-l>
 
 xnoremap ' v`<i'<esc>`>la'<esc>
 
@@ -234,6 +259,7 @@ augroup END
 augroup filetype_javascript
   autocmd!
   " TODO stdin error
+  " TODO jsx
   " autocmd FileType javascript autocmd BufWritePre <buffer> :call Format('esformatter')
   autocmd FileType javascript xnoremap <buffer> V $%
   autocmd FileType javascript set shiftwidth=2
@@ -329,3 +355,69 @@ function! FilenameToMixed(filename)
 endfunction
 
 set guifont=Bitstream\ Vera\ Sans\ Mono:h17
+function! JavaScriptFold()
+    setl foldmethod=syntax
+    setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    endfunction
+    setl foldtext=FoldText()
+endfunction
+" au FileType javascript call JavaScriptFold()
+" au FileType javascript setl fen
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("Ag \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
+  let line = line('.')
+  let column = col('.')
+  let lastline = line('$')
+  let indent = indent(line)
+  let stepvalue = a:fwd ? 1 : -1
+  while (line > 0 && line <= lastline)
+    let line = line + stepvalue
+    if ( ! a:lowerlevel && indent(line) == indent ||
+          \ a:lowerlevel && indent(line) < indent)
+      if (! a:skipblanks || strlen(getline(line)) > 0)
+        if (a:exclusive)
+          let line = line - stepvalue
+        endif
+        exe line
+        exe "normal " column . "|"
+        return
+      endif
+    endif
+  endwhile
+endfunction
+
+" TODO
+" Moving back and forth between lines of same or lower indentation.
+nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+let g:SignatureMap = {
+  \ 'GotoNextSpotAlpha' : "",
+  \ 'GotoPrevSpotAlpha' : "",
+  \ }
