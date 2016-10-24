@@ -1,103 +1,262 @@
 <?xml version="1.0"?>
-<root>
-	<appdef>
-		<appname>SLACK</appname>
-		<equal>com.tinyspeck.slackmacgap</equal>
-	</appdef>
-	<appdef>
-		<appname>CHROME</appname>
-		<equal>com.google.Chrome</equal>
-	</appdef>
-	<appdef>
-		<appname>CHROMIUM</appname>
-		<equal>org.chromium.Chromium</equal>
-	</appdef>
-	<appdef>
-		<appname>ITERM</appname>
-		<equal>com.googlecode.iterm2</equal>
-	</appdef>
-	<item>
-		<name>Control w-right to option delete</name>
-		<identifier>private.control_w_to_option_delete</identifier>
-		<only>CHROME, CHROMIUM, SLACK</only>
-		<autogen>__KeyToKey__
-			KeyCode::W, ModifierFlag::CONTROL_R,
-			KeyCode::DELETE, ModifierFlag::OPTION_L
-		</autogen>
-	</item>
-	<item>
-		<name>Application to control-r</name>
-		<identifier>private.application_to_control_r</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::PC_APPLICATION,
-			KeyCode::CONTROL_R
-		</autogen>
-	</item>
-	<item>
-		<name>Control j to enter</name>
-		<identifier>private.control_j_to_enter</identifier>
-		<only>CHROMIUM, SLACK</only>
-		<autogen>__KeyToKey__
-			KeyCode::J, ModifierFlag::CONTROL_L,
-			KeyCode::ENTER
-		</autogen>
-	</item>
-	<item>
-		<name>Control u to delete line</name>
-		<identifier>private.command_u_to_delete_line</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::U, ModifierFlag::CONTROL_L,
-			KeyCode::DELETE, ModifierFlag::COMMAND_L
-		</autogen>
-	</item>
-	<item>
-		<name>Control p to up arrow</name>
-		<identifier>private.control_p_to_up_arrow</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::P, ModifierFlag::CONTROL_L,
-			KeyCode::CURSOR_UP
-		</autogen>
-	</item>
-	<item>
-		<name>Control f to right arrow</name>
-		<identifier>private.control_f_to_right_arrow</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::F, ModifierFlag::CONTROL_R,
-			KeyCode::CURSOR_RIGHT
-		</autogen>
-	</item>
-	<item>
-		<name>Control v to move right</name>
-		<identifier>private.control_v_to_move_right</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::V, ModifierFlag::CONTROL_R,
-			KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
-		</autogen>
-	</item>
-	<item>
-		<name>Control s to autocomplete</name>
-		<identifier>private.control_s_to_autocomplete</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::S, ModifierFlag::CONTROL_R,
-			KeyCode::CURSOR_RIGHT,
-			KeyCode::CURSOR_DOWN,
-			KeyCode::ENTER
-		</autogen>
-	</item>
-	<item>
-		<name>Control q to move left</name>
-		<identifier>private.control_q_to_move_left</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::Q, ModifierFlag::CONTROL_R,
-			KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
-		</autogen>
-	</item>
-	<item>
-		<name>Semicolon to enter</name>
-		<identifier>private.semicolon_to_enter</identifier>
-		<autogen>__KeyToKey__
-			KeyCode::SEMICOLON, ModifierFlag::NONE,
-			KeyCode::ENTER
-		</autogen>
-	</item>
-</root>
+  <root>
+    <appdef>
+      <appname>SLACK</appname>
+      <equal>com.tinyspeck.slackmacgap</equal>
+    </appdef>
+    <appdef>
+      <appname>EMACS</appname>
+      <equal>org.gnu.Emacs</equal>
+    </appdef>
+    <appdef>
+      <appname>CHROME</appname>
+      <equal>com.google.Chrome</equal>
+    </appdef>
+    <appdef>
+      <appname>CHROMIUM</appname>
+      <equal>org.chromium.Chromium</equal>
+    </appdef>
+    <appdef>
+      <appname>CANARY</appname>
+      <equal>com.google.Chrome.canary</equal>
+    </appdef>
+    <appdef>
+      <appname>ITERM</appname>
+      <equal>com.googlecode.iterm2</equal>
+    </appdef>
+    <appdef>
+      <appname>MESSAGES</appname>
+      <equal>com.apple.iChat</equal>
+    </appdef>
+
+    <item>
+      <name>Control W-right to option delete</name>
+      <identifier>private.control_w_to_option_delete</identifier>
+      <only>CHROME, CHROMIUM, CANARY, SLACK</only>
+      <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::DELETE, ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Application to control-r</name>
+      <identifier>private.application_to_control_r</identifier>
+      <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::CONTROL_R
+      </autogen>
+    </item>
+
+    <item>
+      <name>Control J to enter</name>
+      <identifier>private.control_j_to_enter</identifier>
+      <!-- <not>EMACS</not> -->
+      <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::ENTER
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-u to delete line</name>
+      <identifier>private.control_u_to_delete_line</identifier>
+      <only>CHROME, CHROMIUM, CANARY, SLACK</only>
+      <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::CONTROL_L, KeyCode::DELETE, ModifierFlag::COMMAND_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-p to up arrow</name>
+      <identifier>private.control_p_to_up_arrow</identifier>
+      <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP
+      </autogen>
+      <not>EMACS, ITERM</not>
+    </item>
+
+    <item>
+      <name>c-n to down arrow</name>
+      <identifier>private.control_n_to_down_arrow</identifier>
+      <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN
+      </autogen>
+      <not>EMACS, ITERM</not>
+    </item>
+
+    <item>
+      <name>Option f to right arrow</name>
+      <identifier>private.control_f_to_right_arrow</identifier>
+      <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT
+      </autogen>
+    </item>
+
+    <item>
+      <name>Control v to move right</name>
+      <identifier>private.control_v_to_move_right</identifier>
+      <not>EMACS</not>
+      <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Control s to autocomplete</name>
+      <identifier>private.control_s_to_autocomplete</identifier>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::CONTROL_R, KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_DOWN, KeyCode::ENTER
+      </autogen>
+    </item>
+
+    <item>
+      <name>Control s-left to autocomplete</name>
+      <identifier>private.control_s_to_autocomplete_left</identifier>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_DOWN, KeyCode::ENTER
+      </autogen>
+    </item>
+
+    <item>
+      <name>Control q to move left</name>
+      <identifier>private.control_q_to_move_left</identifier>
+      <not>EMACS</not>
+      <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::CONTROL_R, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Semi to colon</name>
+      <identifier>private.semicolon_to_colon</identifier>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>Builtin keyboard shift disable</name>
+      <identifier>private.builtin_shift_disable</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::VK_NONE
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-spc s-spc</name>
+      <identifier>private.c_spc</identifier>
+      <only>CHROME, CHROMIUM, CANARY</only>
+      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::CONTROL_L, KeyCode::SPACE, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-tab s-tab</name>
+      <identifier>private.c_tab</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+    <item>
+      <name>cmd-c-tab cmd-s-tab</name>
+      <identifier>private.cmd_c_tab</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <!-- <only>CHROME, CHROMIUM, ITERM</only> -->
+      <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::TAB, ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L,
+      </autogen>
+    </item>
+    <item>
+      <name>chrome o-tab to c-tab</name>
+      <identifier>private.chrome_o_tab</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <!-- <only>CHROME, CHROMIUM</only> -->
+      <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+    <item>
+      <name>c-symbol s-symbol</name>
+      <identifier>private.c_symbol</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::CONTROL_L, KeyCode::KEY_4, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::CONTROL_L, KeyCode::MINUS, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CONTROL_L, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::CONTROL_L, KeyCode::EQUAL, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::SLASH, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::CONTROL_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::CONTROL_L, KeyCode::QUOTE, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::CONTROL_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::CONTROL_L, KeyCode::DOT, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_L, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::CONTROL_L, KeyCode::COMMA, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::CONTROL_L, KeyCode::KEY_8, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::CONTROL_L, KeyCode::KEY_7, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-i I</name>
+      <identifier>private.c_i</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <not>EMACS</not>
+      <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::CONTROL_L, KeyCode::I, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+
+    <item>
+      <name>c-spc spc non-terminal</name>
+      <identifier>private.c_spc_spc</identifier>
+      <not>ITERM, EMACS</not>
+      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::CONTROL_L, KeyCode::SPACE
+      </autogen>
+    </item>
+    <item>
+      <name>c-m M</name>
+      <identifier>private.c_m</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+    <item>
+      <name>lazy chrome</name>
+      <identifier>private.lazy_chrome</identifier>
+      <device_only>
+        DeviceVendor::APPLE_INC
+      </device_only>
+      <only>CHROME, CHROMIUM</only>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_DOWN
+      </autogen>
+    </item>
+    <item>
+      <name>slack cmd-`</name>
+      <identifier>private.slack_cmd_tic</identifier>
+      <only>SLACK</only>
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+    <item>
+      <name>Command_L to Command_L</name>
+      <appendix>(+ When you type Command_L only, send ESC )</appendix>
+      <only>EMACS</only>
+      <identifier>private.commandL_esc</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::ESCAPE</autogen>
+    </item>
+  </root>

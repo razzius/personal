@@ -6,6 +6,7 @@
 [credential]
 	helper = osxkeychain
 [alias]
+	start = !git init && hub create
 	add = add --all
 	wdiff = diff --color-words
 	cl = clone
@@ -22,3 +23,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[diff]
+	algorithm = patience
