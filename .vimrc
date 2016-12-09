@@ -57,6 +57,7 @@ let g:pymode_python = 'python3'
 let g:pymode_rope = 0
 let g:pymode_doc = 0
 let g:pymode_rope_complete_on_dot = 0
+highlight Search ctermbg=Blue
 
 call plug#begin('~/.vim/plugged')
 " Plug 'shougo/neocomplete.vim'
@@ -79,7 +80,7 @@ Plug 'valloric/MatchTagAlways'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chrisbra/improvedft'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-peekaboo'
 " Plug 'trusktr/seti.vim'
 Plug 'rking/ag.vim'
