@@ -12,9 +12,11 @@
 	cl = clone
 	unstage = reset HEAD --
 	new = diff --cached
+	current = rev-parse --abbrev-ref HEAD
+	root = rev-parse --show-toplevel
 [core]
 	excludesfile = ~/.gitignore_global
-  editor=vim
+	editor=vim
 [pull]
 	rebase = true
 [rebase]
