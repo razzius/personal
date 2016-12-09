@@ -30,11 +30,11 @@
     </appdef>
 
     <item>
-      <name>Control W-right to option delete</name>
+      <name>Control W to option delete</name>
       <identifier>private.control_w_to_option_delete</identifier>
       <only>CHROME, CHROMIUM, CANARY, SLACK</only>
-      <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::DELETE, ModifierFlag::OPTION_L
-      </autogen>
+      <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::CONTROL_L, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <item>
@@ -184,16 +184,14 @@
       </autogen>
       <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::SLASH, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::CONTROL_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
-      </autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L
       </autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L
       </autogen>
       <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::CONTROL_L, KeyCode::QUOTE, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::CONTROL_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
-      </autogen>
+      <!-- <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::CONTROL_L, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L -->
+      <!-- </autogen> -->
       <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::CONTROL_L, KeyCode::DOT, ModifierFlag::SHIFT_L
       </autogen>
       <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_L, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L
