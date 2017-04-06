@@ -1,8 +1,10 @@
 syntax on
 filetype plugin on
 
+hi Visual ctermbg=LightCyan
+hi String ctermfg=DarkGreen
 set completeopt=menu
-set t_Co=256
+set clipboard=unnamed
 " set foldmethod=syntax
 set lazyredraw
 set autoread
@@ -29,7 +31,7 @@ set number
 " set relativenumber
 set scrolloff=3
 set shell=/bin/sh
-set shiftwidth=4
+set shiftwidth=2
 set shortmess+=I
 set showcmd
 set smartcase
@@ -51,7 +53,8 @@ if $TMUX
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
+let g:vim_markdown_folding_disabled = 1
 " let g:pymode = 1
 let g:pymode_python = 'python3'
 let g:pymode_rope = 0
@@ -61,9 +64,14 @@ highlight Search ctermbg=Blue
 
 call plug#begin('~/.vim/plugged')
 " Plug 'shougo/neocomplete.vim'
+" Plug 'neovimhaskell/haskell-vim'
+Plug 'kana/vim-filetype-haskell'
 Plug 'shougo/neosnippet.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
 Plug 'shougo/unite.vim'
+" Plug 'itchyny/vim-haskell-indent'
 " Plug 'klen/python-mode'
 Plug 'mkarmona/colorsbox'
 Plug 'mattn/emmet-vim'
@@ -159,7 +167,7 @@ nnoremap [[ /^\w.* {<cr>:nohl<cr>
 
 inoremap <c-t> <esc>hxpa
 inoremap kj <esc>
-inoremap <space><space> <esc>
+" inoremap <space><space> <esc>
 inoremap <c-l> <c-x><c-l>
 
 let mapleader = "\<Space>"
@@ -251,6 +259,7 @@ autocmd InsertLeave * update
 
 " todo
 " autocmd FocusLost * :wa
+"
 
 augroup filetype_css
   autocmd!

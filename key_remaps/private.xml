@@ -25,8 +25,16 @@
       <equal>com.googlecode.iterm2</equal>
     </appdef>
     <appdef>
+      <appname>TERMINAL</appname>
+      <equal>com.apple.Terminal</equal>
+    </appdef>
+    <appdef>
       <appname>MESSAGES</appname>
       <equal>com.apple.iChat</equal>
+    </appdef>
+    <appdef>
+      <appname>ATOM</appname>
+      <equal>com.github.atom</equal>
     </appdef>
 
     <item>
@@ -47,7 +55,7 @@
     <item>
       <name>Control J to enter</name>
       <identifier>private.control_j_to_enter</identifier>
-      <!-- <not>EMACS</not> -->
+      <not>TERMINAL</not>
       <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::ENTER
       </autogen>
     </item>
@@ -55,7 +63,7 @@
     <item>
       <name>c-u to delete line</name>
       <identifier>private.control_u_to_delete_line</identifier>
-      <only>CHROME, CHROMIUM, CANARY, SLACK</only>
+      <only>CHROME, CHROMIUM, CANARY, SLACK, TERMINAL, ITERM</only>
       <autogen>__KeyToKey__ KeyCode::U, ModifierFlag::CONTROL_L, KeyCode::DELETE, ModifierFlag::COMMAND_L
       </autogen>
     </item>
@@ -65,7 +73,7 @@
       <identifier>private.control_p_to_up_arrow</identifier>
       <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP
       </autogen>
-      <not>EMACS, ITERM</not>
+      <not>EMACS, ITERM, TERMINAL</not>
     </item>
 
     <item>
@@ -73,7 +81,7 @@
       <identifier>private.control_n_to_down_arrow</identifier>
       <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN
       </autogen>
-      <not>EMACS, ITERM</not>
+      <not>EMACS, ITERM, TERMINAL</not>
     </item>
 
     <item>
@@ -253,7 +261,7 @@
     <item>
       <name>Command_L to Command_L</name>
       <appendix>(+ When you type Command_L only, send ESC )</appendix>
-      <only>EMACS</only>
+      <only>EMACS, ITERM, ATOM, TERMINAL</only>
       <identifier>private.commandL_esc</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::ESCAPE</autogen>
     </item>
