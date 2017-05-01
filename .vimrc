@@ -226,6 +226,7 @@ xnoremap ' v`<i'<esc>`>la'<esc>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+vmap s S
 
 nnoremap <Leader>y "*y
 vnoremap <Leader>y "*y

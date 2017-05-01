@@ -190,8 +190,7 @@
       </autogen>
       <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::CONTROL_L, KeyCode::EQUAL, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::SLASH, ModifierFlag::SHIFT_L
-      </autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::CONTROL_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L
       </autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L
@@ -268,7 +267,6 @@
     <item>
       <name>Command_R to Command_R</name>
       <appendix>(+ When you type Command_R only, send ESC )</appendix>
-      <only>EMACS</only>
       <identifier>private.commandR_esc</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ESCAPE</autogen>
     </item>
