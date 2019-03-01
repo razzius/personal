@@ -29,12 +29,20 @@
       <equal>com.apple.Terminal</equal>
     </appdef>
     <appdef>
+      <appname>LOGIC</appname>
+      <equal>com.apple.logic10</equal>
+    </appdef>
+    <appdef>
       <appname>MESSAGES</appname>
       <equal>com.apple.iChat</equal>
     </appdef>
     <appdef>
       <appname>ATOM</appname>
       <equal>com.github.atom</equal>
+    </appdef>
+    <appdef>
+        <appname>SPOTLIGHT</appname>
+        <equal>com.apple.Spotlight</equal>
     </appdef>
 
     <item>
@@ -182,8 +190,8 @@
     <item>
       <name>c-symbol s-symbol</name>
       <identifier>private.c_symbol</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::CONTROL_L, KeyCode::KEY_4, ModifierFlag::SHIFT_L
-      </autogen>
+      <!-- Disables copy screen grab to pasteboard -->
+      <!-- <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::CONTROL_L, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen> -->
       <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::CONTROL_L, KeyCode::MINUS, ModifierFlag::SHIFT_L
       </autogen>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::CONTROL_L, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L
@@ -260,7 +268,7 @@
     <item>
       <name>Command_L to Command_L</name>
       <appendix>(+ When you type Command_L only, send ESC )</appendix>
-      <only>EMACS, ITERM, ATOM, TERMINAL</only>
+      <not>CHROME, CHROMIUM, CANARY, LOGIC</not>
       <identifier>private.commandL_esc</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::ESCAPE</autogen>
     </item>
@@ -269,5 +277,40 @@
       <appendix>(+ When you type Command_R only, send ESC )</appendix>
       <identifier>private.commandR_esc</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ESCAPE</autogen>
+    </item>
+
+    <item>
+      <name>C-b to left</name>
+      <appendix>Too many web applications rebind this</appendix>
+      <identifier>private.c_b_left</identifier>
+      <autogen>
+        __KeyToKey__ KeyCode::B, ModifierFlag::CONTROL_R,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::B, ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+    </item>
+
+    <item>
+      <name>make m-p select last argument in terminal</name>
+      <only>ITERM</only>
+      <identifier>private.m_p_last_argument</identifier>
+      <autogen>
+        __KeyToKey__ KeyCode::P, ModifierFlag::COMMAND_L,
+        KeyCode::ESCAPE, KeyCode::DOT
+      </autogen>
+    </item>
+
+    <item>
+        <name>Use enter to search web in Spotlight</name>
+        <identifier>private.spotlight.enter</identifier>
+        <only>SPOTLIGHT</only>
+        <autogen>
+            __KeyToKey__ KeyCode::RETURN,
+            KeyCode::RETURN,
+            KeyCode::B, ModifierFlag::COMMAND_L
+        </autogen>
     </item>
   </root>

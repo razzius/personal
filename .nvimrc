@@ -71,7 +71,7 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'kana/vim-textobj-user'
 call plug#end()
 
-colorscheme seti
+" colorscheme seti
 
 let g:airline_extensions = []
 let g:UltiSnipsExpandTrigger="<tab>"

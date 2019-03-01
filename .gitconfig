@@ -9,6 +9,7 @@
 	start = !git init && hub create
 	wdiff = diff --color-words
 	cl = clone
+	status = status -sb
 	unstage = reset HEAD --
 	new = diff --cached
 	current = rev-parse --abbrev-ref HEAD
@@ -22,8 +23,9 @@
 [rebase]
 	stat = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [diff]
 	algorithm = patience

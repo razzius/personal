@@ -4,7 +4,7 @@ filetype plugin on
 hi Visual ctermbg=LightCyan
 hi String ctermfg=DarkGreen
 set completeopt=menu
-set clipboard=unnamed
+set clipboard=unnamedplus
 " set foldmethod=syntax
 set lazyredraw
 set autoread
@@ -31,7 +31,7 @@ set number
 " set relativenumber
 set scrolloff=3
 set shell=/bin/sh
-set shiftwidth=2
+set shiftwidth=4
 set shortmess+=I
 set showcmd
 set smartcase
@@ -48,7 +48,7 @@ set wildmenu
 set wildmode=longest:list,full
 set tags=~/code/clint/tags
 let &showbreak = '> '
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+
 if $TMUX
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -84,7 +84,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
-Plug 'valloric/MatchTagAlways'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-sexp'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chrisbra/improvedft'
 Plug 'jiangmiao/auto-pairs'
@@ -166,7 +167,7 @@ nnoremap ]] /^}<cr>
 nnoremap [[ /^\w.* {<cr>:nohl<cr>
 
 inoremap <c-t> <esc>hxpa
-inoremap kj <esc>
+" inoremap kj <esc>
 " inoremap <space><space> <esc>
 inoremap <c-l> <c-x><c-l>
 
@@ -198,7 +199,7 @@ nnoremap <leader>T :vs#<cr>
 nnoremap <leader>X :tabonly \| :only<cr>
 nnoremap <leader>a :Ag<space>
 " nnoremap <leader>c :exec ':vsp ' . GetFileExtension('css')<cr>
-nnoremap <leader>c V$%jy$%2jP
+nnoremap <leader>c V:w !pbcopy<cr><cr>
 nnoremap <leader>d yyp
 nnoremap <leader>g :G
 nnoremap <leader>h :exec ':vsp ' . GetFileExtension('html')<cr>
@@ -225,6 +226,7 @@ xnoremap ' v`<i'<esc>`>la'<esc>
 
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
+vmap <silent> s S
 nnoremap <silent> p p`]
 vmap s S
 
@@ -290,6 +292,11 @@ augroup filetype_python
   autocmd!
   " autocmd FileType python nnoremap <buffer> <leader>/ 0# <esc>
   autocmd FileType python xnoremap <buffer> V $%
+augroup END
+
+augroup filetype_json
+  autocmd!
+  autocmd FileType json set shiftwidth=2
 augroup END
 
 augroup filetype_html
