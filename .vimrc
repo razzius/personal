@@ -4,7 +4,7 @@ filetype plugin on
 hi Visual ctermbg=LightCyan
 hi String ctermfg=DarkGreen
 set completeopt=menu
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 " set foldmethod=syntax
 set lazyredraw
 set autoread
@@ -97,7 +97,7 @@ Plug 'rking/ag.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-gitgutter'
 Plug 'ivanov/vim-ipython'
-Plug 'tmhedberg/matchit'
+" Plug 'tmhedberg/matchit'
 Plug 'wincent/Command-T', {'do': 'cd ruby/command-t; ruby extconf.rb; make'}
 " TODO better html linter
 Plug 'scrooloose/syntastic'
